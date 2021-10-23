@@ -25,37 +25,19 @@ def getRunInventory(sample_exp_name=None, workspace=None):
                     new_children = w.get_children()
                     temp_test = w.get_children()
 
-                    # Test for emptiness
-
-                    # if parent_runid =="c7003b18-57d7-42b0-946f-19b83048b19e" and child_runid=="8d11cd0c-8ea2-4a5e-9539-a3c45c38bb81":
-                    #     print('im here')
-                    #     a_view = w.get_children()
-                    #     print(f'aview is : {type(a_view)}')
-                    #     try:
-                    #         next_item = next(a_view)
-                    #     except StopIteration:
-                    #         print("no value for further iteration")
-                    #     #print(child_runid)
-
+                    # Test for emptiness on generator
                     proceed = 0
                     try:
                         next_item = next(temp_test)
                         proceed = 1
                     except StopIteration:
                         proceed = 0
-                        print("Do not proceed for parent run id: {parent_runid} and child run id: {child_runid}")
-                    #print(child_runid)
 
                     if proceed == 1:
                         for l,x in enumerate(new_children):
                             sub_children_run_details = x.get_details()
                             sub_children_status = sub_children_run_details['status']
                             sub_childrenrunid = sub_children_run_details['runId']
-
-                            #if child_runid =="eea6fc03-448b-404f-a461-420dca85c12a":
-                            if child_runid =="8d11cd0c-8ea2-4a5e-9539-a3c45c38bb81":
-                                print('i made it this far')
-                                print(sub_childrenrunid)
 
                             key = str(exp) + '_' + str(v) + '_' + str(j) + '_' + str(w) + '_' + str(k) + '_' + str(x) + '_' + str(l)
                             collection_dict[key] = {

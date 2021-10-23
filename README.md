@@ -1,2 +1,2 @@
 # Intent
-A repo to house a number of standalone Python scripts and gists based on customer asks and needs
+A repo to collect standalone scripts and gists useful in working with Azure Machine Learning.
