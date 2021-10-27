@@ -69,7 +69,7 @@ def getRunInventory(sample_exp_name=None, workspace=None):
                         'child_runId': child_runid,
                         'child_run_status':child_run_status
                         }
-    return collection_dict
+    return pd.DataFrame(collection_dict)
 
 def main():
     # Get workspace object
@@ -77,10 +77,9 @@ def main():
 
     # Get inventory from experiments
     exp_object = Experiment(workspace=ws, name='forecasting_for_energy_prices')
-    inventory = getRunInventory(
+    df = getRunInventory(
         sample_exp_name=exp_object, 
         workspace=ws)
-    df = pd.DataFrame(inventory)
     df = df.T
 
     # Download structured inventory
